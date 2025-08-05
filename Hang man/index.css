@@ -1,0 +1,15 @@
+body{
+    background-color: deepskyblue;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.man{
+    width: 700px;
+    height: 1000px;
+    background-color: gainsboro;
+    margin-top: 50px;
+    border-radius: 50px;
+    
+}
