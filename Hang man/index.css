@@ -1,15 +1,116 @@
-body{
-    background-color: deepskyblue;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-}
+    body {
+      background-color: deepskyblue;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      font-family: sans-serif;
+    }
 
-.man{
-    width: 700px;
-    height: 1000px;
-    background-color: gainsboro;
-    margin-top: 50px;
-    border-radius: 50px;
-    
-}
+    .box_1 {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .man {
+      width: 500px;
+      height: 600px;
+      background-color: gainsboro;
+      margin-top: 50px;
+      border-radius: 50px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-image: url("./pixilart-drawing.png");
+    }
+
+    .boom {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      margin-top: 20px;
+      gap: 5px;
+    }
+
+    .life1, .life2, .life3, .life4, .life5, .life6, .life7 {
+      background-image: url("./Image.png");
+      width: 40px;
+      height: 40px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .wordDisplay {
+      font-size: 40px;
+      margin: 20px 0;
+      color: #fff;
+      letter-spacing: 10px;
+      min-height: 50px;
+      text-align: center;
+    }
+
+    .button11 {
+      width: 900px;
+      height: 270px;
+      background-color: dimgray;
+      margin: 50px;
+      border-radius: 50px;
+      padding-top: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .line_1, .line_2, .line_3 {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 10px 0;
+    }
+
+    [class^="button_"] {
+      width: 70px;
+      height: 70px;
+      background-color: #fff;
+      font-size: 50px;
+      font-weight: 200;
+      color: #000;
+      border: 2px solid #000;
+      border-radius: 25px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.2s ease;
+    }
+
+    [class^="button_"]:hover {
+      background-color: #e6e6e6;
+    }
+
+    [class^="button_"]:disabled {
+      background-color: gray;
+      color: #ccc;
+      cursor: not-allowed;
+    }
+
+    .img {
+      width: 500px;
+      height: 600px;
+      background-image: url("./pixilart-drawing.png");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      border-radius: 50px;
+      background-color: gainsboro;
+    }
+
+    .new{
+        background-size: cover;
+    }
