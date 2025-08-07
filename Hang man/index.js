@@ -12,9 +12,9 @@ const words = [
   "tent", "camp", "firewood", "lantern", "match", "stream", "brook", "pool", "crystal", "gem",
   "crown", "ring", "coin", "gold", "silver", "metal", "bronze", "armor", "sword", "shield",
   "helmet", "arrow", "bow", "quiver", "giant", "elf", "dwarf", "troll", "fairy", "wizard",
-  "potion", "spell", "rune", "portal", "key", "door", "lock", "wall", "floor", "ceiling", "expedition", "fantasizing", "colonize", "murder", "pneumonoultramicroscopicsilicovolcanoconiosis"
+  "potion", "spell", "rune", "portal", "key", "door", "lock", "wall", "floor", "ceiling",
+  "expedition", "fantasizing", "colonize", "murder", "pneumonoultramicroscopicsilicovolcanoconiosis"
 ];
-
 
 let selectedWord = "";
 let guessedLetters = [];
@@ -31,6 +31,7 @@ const lifeDivs = [
   document.querySelector(".life7")
 ];
 const manDiv = document.querySelector(".man");
+const guillotineImg = document.querySelector(".guillotine");
 
 function init() {
   selectedWord = words[Math.floor(Math.random() * words.length)].toUpperCase();
@@ -44,21 +45,20 @@ function init() {
 }
 
 function updateWordDisplay() {
-  let display = "";
-  for (let char of selectedWord) {
-    display += guessedLetters.includes(char) ? char + " " : "_ ";
-  }
-  wordDisplay.textContent = display.trim();
+  wordDisplay.textContent = selectedWord
+    .split("")
+    .map(char => guessedLetters.includes(char) ? char : "_")
+    .join(" ");
 }
 
 function updateLivesDisplay() {
-  for (let i = 0; i < lifeDivs.length; i++) {
-    lifeDivs[i].style.visibility = i < lives ? "visible" : "hidden";
-  }
+  lifeDivs.forEach((life, index) => {
+    life.style.visibility = index < lives ? "visible" : "hidden";
+  });
 }
 
 function updateManImage() {
-  let imageIndex = 7 - lives;
+  const imageIndex = 7 - lives;
   manDiv.style.backgroundImage = `url("./hangman${imageIndex}.png")`;
 }
 
@@ -97,12 +97,13 @@ function handleGuess(event) {
   checkGameOver();
 }
 
-
 function checkGameOver() {
-  let won = selectedWord.split("").every(char => guessedLetters.includes(char));
+  const won = selectedWord.split("").every(char => guessedLetters.includes(char));
 
   if (won) {
-    manDiv.style.backgroundImage = `url("./victory.png")`;
+    manDiv.style.backgroundImage = `url("./pixilart-drawing copy 2.png")`;
+    if (guillotineImg) guillotineImg.style.display = "none";
+
     setTimeout(() => {
       alert("🎉 You won! The word was: " + selectedWord);
       init();
@@ -110,13 +111,16 @@ function checkGameOver() {
   }
 
   if (lives <= 0) {
-    manDiv.style.backgroundImage = `url("./gameover.png")`;
+    manDiv.style.backgroundImage = `URL("./pixilart-drawing copy.png")`;
+
     setTimeout(() => {
       alert("💀 Game Over! The word was: " + selectedWord);
       init();
     }, 700);
   }
 }
+
+
 
 function addButtonListeners() {
   const buttons = document.querySelectorAll("[class^='button_']");
