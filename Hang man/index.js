@@ -21,17 +21,14 @@ let guessedLetters = [];
 let lives = 7;
 
 const wordDisplay = document.querySelector(".wordDisplay");
-const lifeDivs = [
-  document.querySelector(".life1"),
-  document.querySelector(".life2"),
-  document.querySelector(".life3"),
-  document.querySelector(".life4"),
-  document.querySelector(".life5"),
-  document.querySelector(".life6"),
-  document.querySelector(".life7")
-];
 const manDiv = document.querySelector(".man");
 const guillotineImg = document.querySelector(".guillotine");
+
+const lifeDivs = [];
+for (let i = 1; i <= 7; i++) {
+  const life = document.querySelector(`.life${i}`);
+  if (life) lifeDivs.push(life);
+}
 
 function init() {
   selectedWord = words[Math.floor(Math.random() * words.length)].toUpperCase();
@@ -45,6 +42,8 @@ function init() {
 }
 
 function updateWordDisplay() {
+  if (!wordDisplay) return;
+
   wordDisplay.textContent = selectedWord
     .split("")
     .map(char => guessedLetters.includes(char) ? char : "_")
@@ -58,6 +57,8 @@ function updateLivesDisplay() {
 }
 
 function updateManImage() {
+  if (!manDiv) return;
+
   const imageIndex = 7 - lives;
   manDiv.style.backgroundImage = `url("./hangman${imageIndex}.png")`;
 }
@@ -101,7 +102,7 @@ function checkGameOver() {
   const won = selectedWord.split("").every(char => guessedLetters.includes(char));
 
   if (won) {
-    manDiv.style.backgroundImage = `url("./pixilart-drawing copy 2.png")`;
+    if (manDiv) manDiv.style.backgroundImage = `url("./pixilart-drawing copy 2.png")`;
     if (guillotineImg) guillotineImg.style.display = "none";
 
     setTimeout(() => {
@@ -111,7 +112,7 @@ function checkGameOver() {
   }
 
   if (lives <= 0) {
-    manDiv.style.backgroundImage = `URL("./pixilart-drawing copy.png")`;
+    if (manDiv) manDiv.style.backgroundImage = `url("./pixilart-drawing copy.png")`;
 
     setTimeout(() => {
       alert("💀 Game Over! The word was: " + selectedWord);
@@ -120,8 +121,6 @@ function checkGameOver() {
   }
 }
 
-
-
 function addButtonListeners() {
   const buttons = document.querySelectorAll("[class^='button_']");
   buttons.forEach(button => {
@@ -129,5 +128,10 @@ function addButtonListeners() {
   });
 }
 
-addButtonListeners();
-init();
+
+document.addEventListener("DOMContentLoaded", () => {
+  addButtonListeners();
+  init();
+});
+
+
