@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Minimal Shop</title>
+    <link rel="stylesheet" href="./index.css">
+  </head>
+  <body>
+    <header>
+      <div class="container nav" aria-label="Top navigation">
+        <a class="brand" href="#">
+          <span class="dot" aria-hidden="true"></span>
+          <span>Minimal Shop</span>
+        </a>
+        <form class="search" role="search" aria-label="Search products">
+          <input
+            type="search"
+            placeholder="Search products…"
+            aria-label="Search"
+          />
+          <button type="button" aria-label="Search">Go</button>
+        </form>
+        <div class="actions">
+          <a class="pill" href="#">Sign in</a>
+          <a class="pill cart" href="#" aria-label="Cart">
+            Cart
+            <span class="badge" aria-label="items in cart">2</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="container hero" aria-labelledby="hero-title">
+        <div class="box">
+          <article class="hero-card">
+            <div class="hero-copy">
+              <p class="pill" style="display: inline-block">
+                NEW • Summer Sale
+              </p>
+              <h1 id="hero-title">
+                Upgrade your space with clean, modern essentials
+              </h1>
+              <p>
+                Simple, responsive e‑commerce layout with semantic HTML and zero
+                JavaScript. Swap images and text to make it yours.
+              </p>
+              <div class="cta">
+                <a class="primary" href="#products">Shop now</a>
+                <a href="#categories">Browse categories</a>
+              </div>
+            </div>
+            <div class="hero-img" aria-hidden="true">
+              <img
+                alt="Featured product collage"
+                src="https://picsum.photos/seed/hero/800/600"
+              />
+            </div>
+          </article>
+          <aside class="side-card" id="categories">
+            <h3>Popular categories</h3>
+            <div class="tags">
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section
+        class="container section"
+        id="products"
+        aria-labelledby="products-title"
+      >
+        <h2 id="products-title">Featured products</h2>
+        <div class="grid">
+            </div>
+            <div class="info">
+              <h3 class="title">Smart LED Bulb</h3>
+              <p class="desc">Voice control, 16M colors, energy‑saving.</p>
+              <div class="price-row">
+                <span class="price">$19.99</span>
+                <span class="muted">In stock</span>
+              </div>
+              <a
+                class="btn full"
+                href="#"
+                aria-label="Add Smart LED Bulb to cart"
+                >Add to cart</a
+              >
+            </div>
+          </article>
+            </div>
+          </article>
+            </div>
+
+            </div>
+          </article>
+
+          
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <small
+          >© <span id="y"></span> Minimal Shop — made with HTML & CSS
+          only.</small
+        >
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById("y").textContent = new Date().getFullYear();
+
+      const search = document.querySelector(".search")
+
+      fetch('https://dummyjson.com/products/search?q=phone')
+      .then(res => res.json())
+      .then((data) => {
+        console.log(data);
+        for (const search of data){
+          search.innerHTML += `<>`
+        }
+      });
+      const tags = document.querySelector(".tags");
+
+      fetch('https://dummyjson.com/products/categories')
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        for (const tag of data){
+
+              tags.innerHTML += `<a class="tag" href="#">${tag.name}</a>`
+        }
+      });
+
+      const gridEL = document.querySelector(".grid");
+
+      fetch("https://dummyjson.com/product")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        for (const product of data.products) {
+            
+        
+        gridEL.innerHTML += `
+        <article class="card" aria-label="${product.title}">
+            <div class="thumb">
+              <img
+                alt="${product.title}"
+                src="${product.thumbnail}"
+              />
+            </div>
+            <div class="info">
+              <h3 class="title">${product.title}</h3>
+              <div class="price-row">
+                <span class="price">$${product.price}</span>
+                <span class="muted">In stock</span>
+              </div>
+              <a class="btn full" href="#" aria-label="Add Mini Fan to cart"
+                >Add to cart</a
+              >
+            </div>
+          </article>`
+          }
+      })
+    </script>
+  </body>
+</html>
