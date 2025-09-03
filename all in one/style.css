@@ -1,0 +1,88 @@
+body {
+    line-height: 1.6;
+    color: #2d2d2d; 
+    background: #f9fafb;
+}
+
+header {
+    background: #334155; 
+    color: #fff;
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+header nav ul li a:hover {
+    text-decoration: underline;
+    color: #cbd5e1;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.7rem 1.5rem;
+    background: #3b82f6;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #2563eb;
+}
+
+.project {
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 5px;
+    background: #fff;
+}
+
+.project a {
+    color: #334155;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.project a:hover {
+    text-decoration: underline;
+    color: #3b82f6;
+}
+
+.skills-list li {
+    background: #475569;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+}
+
+#contact-form button {
+    padding: 0.7rem;
+    border: none;
+    background: #3b82f6;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+#contact-form button:hover {
+    background: #2563eb;
+}
+
+footer {
+    text-align: center;
+    padding: 2rem;
+    background: #334155;
+    color: #fff;
+}
+
+.list {
+    margin-left: 500px;
+}
